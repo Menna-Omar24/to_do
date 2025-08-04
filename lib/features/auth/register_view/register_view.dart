@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:to_do/core/utils/app_assets.dart';
+import 'package:to_do/core/utils/app_size.dart';
+import 'package:to_do/core/widget/custom_elevated_button.dart';
 
+import '../../../core/theme/app_style.dart';
+import '../../../core/utils/app_string.dart';
 import '../../../core/utils/route.dart';
+import '../../../core/widget/custom_text_field.dart';
+import '../login_view/login_view.dart';
 
 class RegisterView extends StatelessWidget {
   static String id = AppRoute.register;
@@ -12,7 +20,48 @@ class RegisterView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-
+          Image.asset(AppAssets.auth),
+          SizedBox(height: AppSize.h23),
+          CustomTextField(
+            hintText: AppString.hintTextUsername,
+            icons: Icons.person_2_outlined,
+          ),
+          SizedBox(height: AppSize.h10),
+          CustomTextField(
+            hintText: AppString.hintTextPassword,
+            icons: Icons.lock,
+          ),
+          SizedBox(height: AppSize.h10),
+          CustomTextField(
+            hintText: AppString.hintTextConfirmPassword,
+            icons: Icons.lock,
+          ),
+          SizedBox(height: AppSize.h45),
+          Padding(
+            padding: REdgeInsets.symmetric(horizontal: 21),
+            child: CustomElevatedButton(
+              titleElevatedButton: AppString.elevateRegister,
+            ),
+          ),
+          SizedBox(height: AppSize.h40_99),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                AppString.alreadyHaveAnAccount,
+                style: AppStyle.fW200FS14CBlack,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginView.id);
+                },
+                child: Text(
+                  AppString.elevateLogin,
+                  style: AppStyle.fW400FS14CBlack,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

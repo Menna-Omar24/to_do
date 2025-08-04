@@ -23,14 +23,14 @@ class CustomElevatedButton extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(AppSize.r14),
           boxShadow: [BoxShadow(
-            color: AppColors.primaryColor,
+            color: AppColors.primary,
             offset: Offset(0, 5),
             blurRadius: AppSize.blur10,
             blurStyle: BlurStyle.normal,
             spreadRadius: AppSize.sp,
           )
           ],
-          color: AppColors.primaryColor,
+          color: AppColors.primary,
         ),
         child: Center(child: Text(
           titleElevatedButton, style: AppStyle.fW300FS19CWhite,)),

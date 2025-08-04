@@ -5,7 +5,7 @@ import 'package:to_do/core/theme/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_string.dart';
 import '../../../core/utils/route.dart';
-import '../../lets_start/view/lets_start.dart';
+import 'lets_start.dart';
 
 class SplashView extends StatefulWidget {
   static String id = AppRoute.splash;
