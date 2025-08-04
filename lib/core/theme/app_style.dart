@@ -8,4 +8,21 @@ class AppStyle {
     fontSize: 36.sp,
     color: AppColors.primaryColor,
   );
+
+  static TextStyle fW400FS24CBlackGrey = TextStyle(
+    fontWeight: FontWeight.w400,
+    fontSize: 24.sp,
+    color: AppColors.blackGreyColor,
+  );
+  static TextStyle fW500FS16CGrey = TextStyle(
+    fontWeight: FontWeight.w500,
+    fontSize: 16.sp,
+    color: AppColors.greyColor,
+  );
+
+  static TextStyle fW300FS19CWhite = TextStyle(
+    fontWeight: FontWeight.w300,
+    fontSize: 19.sp,
+    color: AppColors.white,
+  );
 }
