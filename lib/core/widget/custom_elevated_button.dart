@@ -3,7 +3,6 @@ import 'package:to_do/core/theme/app_colors.dart';
 import 'package:to_do/core/utils/app_size.dart';
 
 import '../theme/app_style.dart';
-import '../utils/app_string.dart';
 
 class CustomElevatedButton extends StatelessWidget {
 

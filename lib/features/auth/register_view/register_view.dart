@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do/core/utils/app_assets.dart';
@@ -17,52 +18,91 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController userName = TextEditingController();
+    TextEditingController password = TextEditingController();
+    TextEditingController confirmPassword = TextEditingController();
+
+    GlobalKey<FormState> key = GlobalKey();
+
     return Scaffold(
-      body: Column(
-        children: [
-          Image.asset(AppAssets.auth),
-          SizedBox(height: AppSize.h23),
-          CustomTextField(
-            hintText: AppString.hintTextUsername,
-            icons: Icons.person_2_outlined,
-          ),
-          SizedBox(height: AppSize.h10),
-          CustomTextField(
-            hintText: AppString.hintTextPassword,
-            icons: Icons.lock,
-          ),
-          SizedBox(height: AppSize.h10),
-          CustomTextField(
-            hintText: AppString.hintTextConfirmPassword,
-            icons: Icons.lock,
-          ),
-          SizedBox(height: AppSize.h45),
-          Padding(
-            padding: REdgeInsets.symmetric(horizontal: 21),
-            child: CustomElevatedButton(
-              titleElevatedButton: AppString.elevateRegister,
+      body: Form(
+        key: key,
+        child: Column(
+          children: [
+            Image.asset(AppAssets.auth),
+            SizedBox(height: AppSize.h23),
+            CustomTextField(
+              controller: userName,
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Please enter a username';
+                }
+                return null;
+              },
+              hintText: AppString.hintTextUsername,
+              icon: AppAssets.profile,
             ),
-          ),
-          SizedBox(height: AppSize.h40_99),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                AppString.alreadyHaveAnAccount,
-                style: AppStyle.fW200FS14CBlack,
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, LoginView.id);
+            SizedBox(height: AppSize.h10),
+            CustomTextField(
+              controller: password,
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Please enter a password';
+                } else if (value.length < 6) {
+                  return 'Password must be at least 6 characters';
+                }
+                return null;
+              },
+              hintText: AppString.hintTextPassword,
+              icon: AppAssets.password,
+              isPassword: true,
+            ),
+            SizedBox(height: AppSize.h10),
+            CustomTextField(
+              controller: confirmPassword,
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Please confirm your password';
+                } else if (value != password.text) {
+                  return 'Passwords do not match';
+                }
+                return null;
+              },
+              hintText: AppString.hintTextConfirmPassword,
+              icon: AppAssets.password,
+              isPassword: true,
+            ),
+            SizedBox(height: AppSize.h23),
+            Padding(
+              padding: REdgeInsets.symmetric(horizontal: 21),
+              child: CustomElevatedButton(
+                titleElevatedButton: AppString.elevateRegister,
+                onTap: () {
+                  if (key.currentState!.validate()) {
+
+                  }
                 },
-                child: Text(
-                  AppString.elevateLogin,
-                  style: AppStyle.fW400FS14CBlack,
-                ),
               ),
-            ],
-          ),
-        ],
+            ),
+            SizedBox(height: AppSize.h40_99),
+            Text.rich(
+              TextSpan(
+                text: AppString.alreadyHaveAnAccount,
+                style: AppStyle.fW200FS14CBlack,
+                children: [
+                  TextSpan(
+                    text: AppString.elevateLogin,
+                    style: AppStyle.fW400FS14CBlack,
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        Navigator.pushNamed(context, LoginView.id);
+                      },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
