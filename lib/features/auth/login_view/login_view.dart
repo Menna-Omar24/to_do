@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do/features/home/home_view.dart';
-
 import '../../../core/theme/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
@@ -13,6 +12,7 @@ import '../../../core/widget/custom_text_field.dart';
 import '../register_view/register_view.dart';
 
 class LoginView extends StatelessWidget {
+
   static String id = AppRoute.login;
 
   const LoginView({super.key});
@@ -51,6 +51,7 @@ class LoginView extends StatelessWidget {
                 } else if (value.length < 6) {
                   return 'Password must be at least 6 characters';
                 }
+                return null;
               },
               hintText: AppString.hintTextPassword,
               icon: AppAssets.password,
@@ -63,7 +64,7 @@ class LoginView extends StatelessWidget {
                 titleElevatedButton: AppString.elevateLogin,
                 onTap: () {
                   if (key.currentState!.validate()) {
-                    Navigator.pushNamed(context, HomeView.id);
+                    Navigator.pushNamed(context, HomeView.id,arguments: userName.text);
                   }
                 },
               ),

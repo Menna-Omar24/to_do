@@ -26,4 +26,18 @@ class AppString {
   static const String desHome = '''There are no tasks yet,
   Press the button
   To add New Task ''';
+
+//   profile
+  static const String profile = 'Profile';
+  static const String changePassword = 'Change Password';
+  static const String settings = 'Settings';
+
+//   change password
+  static const String oldPassword = 'Old Password';
+  static const String newPassword = 'New Password';
+  static const String confirmPassword = 'Confirm Password';
+  static const String elevateSave = 'Save';
+
+//   setting
+static const String language = 'Language';
 }
