@@ -32,13 +32,28 @@ class CustomCard extends StatelessWidget {
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.r)),
       child: ListTile(
-        leading: ClipRRect(
-          borderRadius: BorderRadius.circular(7.r),
-          child: Image.asset(
-            AppAssets.auth,
-            width: 60.w,
-            height: 60.h,
-            fit: BoxFit.cover,
+        leading: Container(
+          width: 60.w,
+          height: 60.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(7.r),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(65),
+                blurRadius: 4,
+                spreadRadius: 0,
+                offset: Offset(0, 4),
+              ),
+            ],
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(7.r),
+            child: Image.asset(
+              AppAssets.auth,
+              width: 60.w,
+              height: 60.h,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         title: Padding(
@@ -60,7 +75,7 @@ class CustomCard extends StatelessWidget {
                   ),
                   child: Text(
                     textIcon,
-                    style: TextStyle(color: textColor),
+                    style: TextStyle(color: textColor, fontSize: 10.sp, fontWeight: FontWeight.w600),
                   ),
                 ),
               ),

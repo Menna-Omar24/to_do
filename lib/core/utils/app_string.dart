@@ -38,6 +38,11 @@ class AppString {
   static const String homeTask = 'Home Task';
   static const String personalTask = 'Personal Task';
 
+
+  static const String work = 'Work';
+  static const String home = 'Home';
+  static const String personal = 'Personal';
+
   static const String addNewFeatures = 'Add New Features';
   static const String addFeature = 'Add new feature for Do It \napp and commit it';
   static const String improveMyEnglishSkills = 'Improve my English skills \nby trying to speak';

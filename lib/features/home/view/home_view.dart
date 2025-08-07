@@ -64,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final userName =
-        ModalRoute.of(context)!.settings.arguments as String? ?? 'Guest';
+        ModalRoute.of(context)!.settings.arguments as String? ?? 'Menna Omar';
     return Scaffold(
       floatingActionButton: CustomFloatingButton(
         onPressed: () {

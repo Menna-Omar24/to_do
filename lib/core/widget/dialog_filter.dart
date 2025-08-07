@@ -68,7 +68,6 @@ class _DialogFilterState extends State<DialogFilter> {
           ),
 
           SizedBox(height: AppSize.h22),
-
           GestureDetector(
             onTap: () async {
               final pickedDate = await showDatePicker(
