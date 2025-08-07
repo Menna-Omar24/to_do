@@ -34,10 +34,13 @@ class AppAssets {
   static const String bagX = '${pathBasicIcon}bag_x.svg';
 
   static const String home = '${pathBasicIcon}home.svg';
+  static const String homeBabyBink = '${pathBasicIcon}home_baby_bink.svg';
+
 
   //   profile icons
   static const String arrow = '${pathBasicIcon}arrow.svg';
   static const String arrowBack = '${pathBasicIcon}arrow_back.svg';
+  static const String arrowDown = '${pathBasicIcon}arrow_down.svg';
   static const String setting = '${pathBasicIcon}setting.svg';
 
   // calendar icons
@@ -45,4 +48,7 @@ class AppAssets {
   static const String filter = '${pathBasicIcon}Filter.svg';
   static const String delete = '${pathBasicIcon}delete.svg';
   static const String search = '${pathBasicIcon}search.svg';
+
+//   today task
+
 }

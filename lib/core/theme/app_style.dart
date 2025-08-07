@@ -23,16 +23,28 @@ class AppStyle {
     color: AppColors.white,
   );
 
+  static TextStyle fW300FS14CBlack = TextStyle(
+    fontWeight: FontWeight.w300,
+    fontSize: 14.sp,
+    color: AppColors.black,
+  );
+
   static TextStyle fW300FS19CWhite = TextStyle(
     fontWeight: FontWeight.w300,
     fontSize: 19.sp,
     color: AppColors.white,
   );
 
+  static TextStyle fW300FS19CBlackLight = TextStyle(
+    fontWeight: FontWeight.w300,
+    fontSize: 19.sp,
+    color: AppColors.blackLight,
+  );
+
   static TextStyle fW300FS20CWhite = TextStyle(
     fontWeight: FontWeight.w300,
     fontSize: 20.sp,
-    color: AppColors.white,
+    color: AppColors.blackLight,
   );
 
   static TextStyle fW300FS12CBlackLight = TextStyle(
@@ -53,11 +65,6 @@ class AppStyle {
     color: AppColors.blackLight,
   );
 
-  static TextStyle fW300FS19CBlackLight = TextStyle(
-    fontWeight: FontWeight.w300,
-    fontSize: 19.sp,
-    color: AppColors.blackLight,
-  );
 
   static TextStyle fW300FS20CBlackLight = TextStyle(
     fontWeight: FontWeight.w300,
@@ -149,6 +156,11 @@ class AppStyle {
     fontWeight: FontWeight.w500,
     fontSize: 40.sp,
     color: AppColors.white,
+  );
+
+  static TextStyle fW600FS10 = TextStyle(
+    fontWeight: FontWeight.w600,
+    fontSize: 10.sp,
   );
 
   // w900

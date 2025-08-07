@@ -5,6 +5,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_style.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_string.dart';
+import '../../today_task/view/today_task.dart';
 
 class CustomTask extends StatelessWidget {
   const CustomTask({super.key});
@@ -41,7 +42,9 @@ class CustomTask extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, TodayTask.id);
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                   ),

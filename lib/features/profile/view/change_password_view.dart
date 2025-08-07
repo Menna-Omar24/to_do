@@ -23,15 +23,22 @@ class ChangePasswordView extends StatelessWidget {
           Image.asset('assets/images/auth.png'),
           SizedBox(height: 23.h),
           CustomTextFormField(
-              controller: oldPasswordController,hintText: AppString.oldPassword),
+            controller: oldPasswordController,
+            hintText: AppString.oldPassword,
+          ),
           SizedBox(height: 16.h),
           CustomTextFormField(
-              controller: newPasswordController,hintText: AppString.newPassword),
+            controller: newPasswordController,
+            hintText: AppString.newPassword,
+          ),
           SizedBox(height: 16.h),
           CustomTextFormField(
-              controller: confirmPasswordController,hintText: AppString.confirmPassword),
+            controller: confirmPasswordController,
+            hintText: AppString.confirmPassword,
+          ),
+          SizedBox(height: 23.h),
           Padding(
-            padding: REdgeInsets.all(23.0),
+            padding: REdgeInsets.symmetric(horizontal: 22),
             child: CustomElevatedButton(
               titleElevatedButton: AppString.elevateSave,
             ),

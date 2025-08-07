@@ -4,10 +4,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_style.dart';
 import '../../../core/utils/app_size.dart';
-import '../../../core/utils/app_string.dart';
 
-class InProgress extends StatelessWidget {
-  const InProgress({super.key});
+class CustomRowText extends StatelessWidget {
+  final String title;
+  final int num;
+
+  const CustomRowText({super.key, required this.title, required this.num});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class InProgress extends StatelessWidget {
       padding: REdgeInsets.symmetric(vertical: 26,),
       child: Row(
         children: [
-          Text(AppString.inProgress, style: AppStyle.fW300FS14CBlackLight),
+          Text(title, style: AppStyle.fW300FS14CBlackLight),
           SizedBox(width: AppSize.w30),
           Container(
             width: AppSize.w14,
@@ -25,7 +27,7 @@ class InProgress extends StatelessWidget {
               borderRadius: BorderRadius.circular(5.r),
             ),
             child: Center(
-              child: Text('5', style: AppStyle.fW400FS12CPrimary),
+              child: Text('$num', style: AppStyle.fW400FS12CPrimary),
             ),
           ),
         ],
