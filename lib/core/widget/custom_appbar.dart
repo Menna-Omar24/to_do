@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../features/profile/view/profile_view.dart';
 import '../theme/app_style.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_size.dart';
@@ -28,9 +26,9 @@ class CustomAppbar extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(AppString.hello, style: AppStyle.fW300FS12CBlack),
+            Text(AppString.hello, style: AppStyle.fW300FS12CBlackLight),
             SizedBox(height: AppSize.h4),
-            Text(userName, style: AppStyle.fW300FS16CBlack),
+            Text(userName, style: AppStyle.fW300FS16CBlackLight),
           ],
         ),
       ],

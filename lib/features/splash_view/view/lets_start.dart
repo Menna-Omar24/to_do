@@ -28,7 +28,7 @@ class LetsStart extends StatelessWidget {
               SizedBox(height: AppSize.h60),
               Text(
                 AppString.titleLetsStart,
-                style: AppStyle.fW400FS24CBlackGrey,
+                style: AppStyle.fW400FS24CBlackLight,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: AppSize.h40),

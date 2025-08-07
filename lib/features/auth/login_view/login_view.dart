@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:to_do/features/home/home_view.dart';
+import 'package:to_do/features/home/view/home_view.dart';
 import '../../../core/theme/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
@@ -40,7 +40,7 @@ class LoginView extends StatelessWidget {
                 return null;
               },
               hintText: AppString.hintTextUsername,
-              icon: AppAssets.profile,
+              icon: AppAssets.profileOutline,
             ),
             SizedBox(height: AppSize.h10),
             CustomTextField(
@@ -73,11 +73,11 @@ class LoginView extends StatelessWidget {
             Text.rich(
               TextSpan(
                 text: AppString.doNotHaveAnAccount,
-                style: AppStyle.fW200FS14CBlack,
+                style: AppStyle.fW200FS14CBlackLight,
                 children: [
                   TextSpan(
                     text: AppString.elevateRegister,
-                    style: AppStyle.fW400FS14CBlack,
+                    style: AppStyle.fW400FS14CBlackLight,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.pushNamed(context, RegisterView.id);

@@ -30,7 +30,7 @@ class ProfileView extends StatelessWidget {
               SizedBox(height: AppSize.h37),
               CustomContainer(
                 title: AppString.profile,
-                icon: AppAssets.profile,
+                icon: AppAssets.profileOutline,
                 onTap: () {
                   Navigator.pushNamed(context, UpdateProfileView.id);
                 },

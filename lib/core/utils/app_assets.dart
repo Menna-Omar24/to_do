@@ -19,14 +19,30 @@ class AppAssets {
   static const String password = '${pathBasicIcon}password.svg';
 
   // home
-  static const String home = '${pathBasic}home.svg';
+  static const String noData = '${pathBasic}no_data.svg';
 
   // home icons
-  static const String profile = '${pathBasicIcon}profile.svg';
+  static const String profileOutline = '${pathBasicIcon}profile_outline.svg';
+  static const String profilePrimary = '${pathBasicIcon}profile_primary.svg';
+  static const String profilePrimaryLight =
+      '${pathBasicIcon}profile_primary_light.svg';
+
   static const String plus = '${pathBasicIcon}plus.svg';
+
+  static const String bag_2x = '${pathBasicIcon}bag_2x.svg';
+  static const String bagBabyBink = '${pathBasicIcon}bag_baby_bink.svg';
+  static const String bagX = '${pathBasicIcon}bag_x.svg';
+
+  static const String home = '${pathBasicIcon}home.svg';
 
   //   profile icons
   static const String arrow = '${pathBasicIcon}arrow.svg';
   static const String arrowBack = '${pathBasicIcon}arrow_back.svg';
   static const String setting = '${pathBasicIcon}setting.svg';
+
+  // calendar icons
+  static const String calendar = '${pathBasicIcon}calendar.svg';
+  static const String filter = '${pathBasicIcon}Filter.svg';
+  static const String delete = '${pathBasicIcon}delete.svg';
+  static const String search = '${pathBasicIcon}search.svg';
 }

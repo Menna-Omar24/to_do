@@ -20,7 +20,7 @@ class SettingView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(AppString.settings, style: AppStyle.fW300FS19CBlack),
+        title: Text(AppString.settings, style: AppStyle.fW300FS19CBlackLight),
         backgroundColor: AppColors.bgColor,
         leading: SizedBox(
           width: AppSize.w13_56,
@@ -42,13 +42,13 @@ class SettingView extends StatelessWidget {
         padding: REdgeInsets.symmetric(horizontal: 20.0, vertical: 50.0),
         child: Row(
           children: [
-            Text(AppString.language, style: AppStyle.fW300FS20CBlack),
+            Text(AppString.language, style: AppStyle.fW300FS20CBlackLight),
             Spacer(),
             Container(
               width: AppSize.w51,
               height: AppSize.h36,
               decoration: BoxDecoration(color: AppColors.greyLight),
-              child: Center(child: Text('AR', style: AppStyle.fW300FS20CBlack)),
+              child: Center(child: Text('AR', style: AppStyle.fW300FS20CBlackLight)),
             ),
             Container(
               width: AppSize.w51,

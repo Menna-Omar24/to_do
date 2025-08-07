@@ -27,17 +27,33 @@ class AppString {
   Press the button
   To add New Task ''';
 
-//   profile
+  static const String desYourTodayTasks = 'Your today’s tasks \nalmost done!';
+
+  static const String viewTasks = 'View Tasks';
+  static const String inProgress = 'In Progress';
+
+  static const String taskGroups ='Task Groups';
+
+  static const String workTask = 'Work Task';
+  static const String homeTask = 'Home Task';
+  static const String personalTask = 'Personal Task';
+
+  static const String addNewFeatures = 'Add New Features';
+  static const String addFeature = 'Add new feature for Do It \napp and commit it';
+  static const String improveMyEnglishSkills = 'Improve my English skills \nby trying to speak';
+
+
+  //   profile
   static const String profile = 'Profile';
   static const String changePassword = 'Change Password';
   static const String settings = 'Settings';
 
-//   change password
+  //   change password
   static const String oldPassword = 'Old Password';
   static const String newPassword = 'New Password';
   static const String confirmPassword = 'Confirm Password';
   static const String elevateSave = 'Save';
 
-//   setting
-static const String language = 'Language';
+  //   setting
+  static const String language = 'Language';
 }

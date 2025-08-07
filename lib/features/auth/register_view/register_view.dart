@@ -40,7 +40,7 @@ class RegisterView extends StatelessWidget {
                 return null;
               },
               hintText: AppString.hintTextUsername,
-              icon: AppAssets.profile,
+              icon: AppAssets.profileOutline,
             ),
             SizedBox(height: AppSize.h10),
             CustomTextField(
@@ -88,11 +88,11 @@ class RegisterView extends StatelessWidget {
             Text.rich(
               TextSpan(
                 text: AppString.alreadyHaveAnAccount,
-                style: AppStyle.fW200FS14CBlack,
+                style: AppStyle.fW200FS14CBlackLight,
                 children: [
                   TextSpan(
                     text: AppString.elevateLogin,
-                    style: AppStyle.fW400FS14CBlack,
+                    style: AppStyle.fW400FS14CBlackLight,
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         Navigator.pushNamed(context, LoginView.id);

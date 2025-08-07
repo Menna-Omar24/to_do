@@ -6,7 +6,6 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
-import '../../../core/utils/app_string.dart';
 
 class CustomContainer extends StatelessWidget {
   final String title;
@@ -37,7 +36,7 @@ class CustomContainer extends StatelessWidget {
             children: [
               SvgPicture.asset(icon),
               SizedBox(width: AppSize.w16),
-              Text(title, style: AppStyle.fW400FS16CBlack),
+              Text(title, style: AppStyle.fW400FS16CBlackLight),
               Spacer(),
               SvgPicture.asset(AppAssets.arrow),
             ],
