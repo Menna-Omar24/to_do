@@ -1,4 +1,4 @@
 ## Demo Video
-[🎥 شاهد الفيديو](assets/video/demo.mp4)
+[🎥 شاهد الفيديو](https://github.com/Menna-Omar24/to_do/releases/download/v1.0-beta/demo.mp4)
 
-<video src="assets/video/demo.mp4" controls width="400"></video>
+<video src="https://github.com/Menna-Omar24/to_do/releases/download/v1.0-beta/demo.mp4" controls width="400"></video>
