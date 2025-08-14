@@ -7,10 +7,10 @@ import 'package:to_do/features/home/widget/custom_row_text.dart';
 import 'package:to_do/features/today_task/view/add_task.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_style.dart';
+import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
-import '../../../core/utils/route.dart';
+import '../../../core/utils/app_route.dart';
 import '../../../core/widget/custom_appbar.dart';
 import '../../../core/widget/custom_floating_button.dart';
 import '../../profile/view/profile_view.dart';

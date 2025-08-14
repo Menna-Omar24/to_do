@@ -5,7 +5,7 @@ import 'package:to_do/features/profile/view/setting_view.dart';
 import 'package:to_do/features/profile/view/update_profile_view.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
-import '../../../core/utils/route.dart';
+import '../../../core/utils/app_route.dart';
 import '../../../core/widget/custom_appbar.dart';
 import '../widget/custom_container.dart';
 import 'change_password_view.dart';

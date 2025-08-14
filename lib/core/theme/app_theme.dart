@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
-import 'app_style.dart';
+import '../utils/app_style.dart';
 
 class AppTheme{
   static ThemeData isLightTheme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
     scaffoldBackgroundColor: AppColors.bgColor,
     fontFamily: 'LexendDeca',
     appBarTheme: AppBarTheme(

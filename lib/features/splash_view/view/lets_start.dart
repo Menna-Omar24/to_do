@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:to_do/core/utils/app_assets.dart';
+import 'package:to_do/core/utils/app_padding.dart';
+import 'package:to_do/core/widget/custom_ele_btn.dart';
 
-import '../../../core/theme/app_style.dart';
+import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_string.dart';
-import '../../../core/utils/route.dart';
+import '../../../core/utils/app_route.dart';
 import '../../../core/widget/custom_elevated_button.dart';
-import '../../auth/register_view/register_view.dart';
+import '../../auth/register_view.dart';
 
 class LetsStart extends StatelessWidget {
   static String id = AppRoute.letsStart;
@@ -20,7 +22,7 @@ class LetsStart extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: REdgeInsets.symmetric(horizontal: 22),
+          padding: AppPadding.defaultPadding,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -38,9 +40,18 @@ class LetsStart extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: AppSize.h55),
-              CustomElevatedButton(
+            /*  CustomElevatedButton(
                 titleElevatedButton: AppString.elevateLetsStart,
                 onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegisterView()),
+                  );
+                },
+              ),*/
+              CustomEleBtn(
+                text: AppString.elevateLetsStart,
+                onPressed: () {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => RegisterView()),

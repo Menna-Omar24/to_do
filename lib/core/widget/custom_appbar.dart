@@ -1,14 +1,24 @@
+import 'dart:io';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import '../theme/app_style.dart';
+import '../utils/app_style.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_size.dart';
 import '../utils/app_string.dart';
 
-class CustomAppbar extends StatelessWidget {
+class CustomAppbar extends StatefulWidget {
   final String userName;
   final void Function()? onTap;
 
   const CustomAppbar({super.key, required this.userName, this.onTap});
+
+  @override
+  State<CustomAppbar> createState() => _CustomAppbarState();
+}
+
+class _CustomAppbarState extends State<CustomAppbar> {
+  File? pickImage;
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +26,12 @@ class CustomAppbar extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         InkWell(
-          onTap: onTap,
+          onTap: widget.onTap,
           child: CircleAvatar(
             radius: 30,
-            backgroundImage: AssetImage(AppAssets.auth),
+            backgroundImage: pickImage == null
+                ? AssetImage(AppAssets.auth)
+                : FileImage(pickImage!),
           ),
         ),
         SizedBox(width: AppSize.w16),
@@ -28,7 +40,7 @@ class CustomAppbar extends StatelessWidget {
           children: [
             Text(AppString.hello, style: AppStyle.fW300FS12CBlackLight),
             SizedBox(height: AppSize.h4),
-            Text(userName, style: AppStyle.fW300FS16CBlackLight),
+            Text(widget.userName, style: AppStyle.fW300FS16CBlackLight),
           ],
         ),
       ],

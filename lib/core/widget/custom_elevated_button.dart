@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:to_do/core/theme/app_colors.dart';
 import 'package:to_do/core/utils/app_size.dart';
 
-import '../theme/app_style.dart';
+import '../utils/app_style.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   final String titleElevatedButton;
@@ -41,3 +41,5 @@ class CustomElevatedButton extends StatelessWidget {
     );
   }
 }
+
+

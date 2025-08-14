@@ -11,6 +11,7 @@ class AppString {
 
   //   auth Register
   static const String hintTextUsername = 'Username';
+  static const String hintTextEmail = 'Email';
   static const String hintTextPassword = 'Password';
   static const String hintTextConfirmPassword = 'Confirm Password';
   static const String elevateRegister = 'Register';
@@ -52,6 +53,7 @@ class AppString {
   static const String profile = 'Profile';
   static const String changePassword = 'Change Password';
   static const String settings = 'Settings';
+  static const String choiceImage = 'Choice Image';
 
   //   change password
   static const String oldPassword = 'Old Password';

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do/core/widget/custom_elevated_button.dart';
 
 import '../../../core/utils/app_string.dart';
-import '../../../core/utils/route.dart';
+import '../../../core/utils/app_route.dart';
 import '../widget/custom_text_form_field.dart';
 
 class ChangePasswordView extends StatelessWidget {

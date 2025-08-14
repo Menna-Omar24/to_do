@@ -1,18 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do/features/home/view/home_view.dart';
-import '../../../core/theme/app_style.dart';
-import '../../../core/utils/app_assets.dart';
-import '../../../core/utils/app_size.dart';
-import '../../../core/utils/app_string.dart';
-import '../../../core/utils/route.dart';
-import '../../../core/widget/custom_elevated_button.dart';
-import '../../../core/widget/custom_text_field.dart';
-import '../register_view/register_view.dart';
+import '../../core/helper/sign_in_account.dart';
+import '../../core/utils/app_style.dart';
+import '../../core/utils/app_assets.dart';
+import '../../core/utils/app_size.dart';
+import '../../core/utils/app_string.dart';
+import '../../core/utils/app_route.dart';
+import '../../core/widget/custom_elevated_button.dart';
+import '../../core/widget/custom_text_field.dart';
+import 'register_view.dart';
 
 class LoginView extends StatelessWidget {
-
   static String id = AppRoute.login;
 
   const LoginView({super.key});
@@ -20,6 +21,7 @@ class LoginView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController userName = TextEditingController();
+    TextEditingController email = TextEditingController();
     TextEditingController password = TextEditingController();
 
     GlobalKey<FormState> key = GlobalKey();
@@ -44,6 +46,18 @@ class LoginView extends StatelessWidget {
             ),
             SizedBox(height: AppSize.h10),
             CustomTextField(
+              controller: email,
+              validator: (value) {
+                if (value == null || value.trim().isEmpty) {
+                  return 'Please enter an email';
+                }
+                return null;
+              },
+              hintText: AppString.hintTextEmail,
+              icon: AppAssets.profileOutline,
+            ),
+            SizedBox(height: AppSize.h10),
+            CustomTextField(
               controller: password,
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
@@ -62,14 +76,38 @@ class LoginView extends StatelessWidget {
               padding: REdgeInsets.symmetric(horizontal: 21),
               child: CustomElevatedButton(
                 titleElevatedButton: AppString.elevateLogin,
-                onTap: () {
+                onTap: () async {
                   if (key.currentState!.validate()) {
-                    Navigator.pushNamed(context, HomeView.id,arguments: userName.text);
+                    bool isSignedIn = await signInAccount(
+                      email.text,
+                      password.text,
+                    );
+                    if (isSignedIn) {
+                      Navigator.pushNamed(
+                        context,
+                        HomeView.id,
+                        arguments: userName.text,
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(
+                            'Login failed. Please check your credentials.',
+                          ),
+                        ),
+                      );
+                    }
                   }
                 },
               ),
             ),
             SizedBox(height: AppSize.h40_99),
+            // Padding(
+            //   padding: const EdgeInsets.all(22.0),
+            //   child: CustomEleBtn(text: 'LOGIN',onPressed: (){
+            //
+            //   },),
+            // ),
             Text.rich(
               TextSpan(
                 text: AppString.doNotHaveAnAccount,

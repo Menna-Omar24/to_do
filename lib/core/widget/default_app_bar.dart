@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:to_do/core/theme/app_style.dart';
+import 'package:to_do/core/utils/app_style.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_size.dart';
 

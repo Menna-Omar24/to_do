@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/utils/app_string.dart';
-import '../../../core/utils/route.dart';
+import '../../../core/utils/app_route.dart';
 import '../../../core/widget/default_app_bar.dart';
 import '../../home/view/home_view.dart';
 
