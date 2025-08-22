@@ -98,7 +98,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
                     backgroundColor: AppColors.grey,
                     radius: 90,
                     backgroundImage: pickImage == null
-                        ? AssetImage(AppAssets.auth)
+                        ? AssetImage(AppAssets.flag)
                         : FileImage(pickImage!),
                   ),
 
@@ -119,7 +119,8 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 22),
               child: CustomElevatedButton(
-                titleElevatedButton: AppString.elevateSave,
+                text: AppString.elevateSave,
+                onPressed: () {},
               ),
             ),
           ],

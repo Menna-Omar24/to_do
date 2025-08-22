@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:to_do/core/utils/app_style.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_size.dart';
+import '../utils/app_text_style.dart';
 
 class DefaultAppBar extends StatelessWidget {
   final String title;
@@ -13,7 +13,7 @@ class DefaultAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title,style: AppStyle.fW300FS19CBlackLight,),
+      title: Text(title,style: AppTextStyle.fW300FS19CBlackLight,),
       leading: SizedBox(
         width: AppSize.w13_56,
         height: AppSize.h7_44,

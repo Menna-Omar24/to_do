@@ -7,10 +7,10 @@ import 'package:to_do/features/home/widget/custom_row_text.dart';
 import 'package:to_do/features/today_task/view/add_task.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_route.dart';
+import '../../../core/utils/app_text_style.dart';
 import '../../../core/widget/custom_appbar.dart';
 import '../../../core/widget/custom_floating_button.dart';
 import '../../profile/view/profile_view.dart';
@@ -95,7 +95,7 @@ class _HomeViewState extends State<HomeView> {
         SizedBox(height: AppSize.h48),
         Text(
           AppString.desHome,
-          style: AppStyle.fW300FS16CBlackLight,
+          style: AppTextStyle.fW300FS16CBlackLight,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: AppSize.h63_8),
@@ -143,7 +143,7 @@ class _HomeViewState extends State<HomeView> {
                 children: [
                   Text(
                     AppString.taskGroups,
-                    style: AppStyle.fW300FS14CBlackLight,
+                    style: AppTextStyle.fW300FS14CBlackLight,
                   ),
                 ],
               ),

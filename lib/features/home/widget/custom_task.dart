@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_string.dart';
+import '../../../core/utils/app_text_style.dart';
 import '../../today_task/view/today_task.dart';
 
 class CustomTask extends StatelessWidget {
@@ -26,7 +26,7 @@ class CustomTask extends StatelessWidget {
           children: [
             Text(
               AppString.desYourTodayTasks,
-              style: AppStyle.fW400FS14CWhite,
+              style: AppTextStyle.fW400FS14CWhite,
             ),
             SizedBox(height: AppSize.h4),
             Row(
@@ -35,9 +35,9 @@ class CustomTask extends StatelessWidget {
                 Text.rich(
                   TextSpan(
                     text: '80',
-                    style: AppStyle.fW500FS40CWhite,
+                    style: AppTextStyle.fW500FS40CWhite,
                     children: [
-                      TextSpan(text: '%', style: AppStyle.fW500FS24CWhite),
+                      TextSpan(text: '%', style: AppTextStyle.fW500FS24CWhite),
                     ],
                   ),
                 ),
@@ -50,7 +50,7 @@ class CustomTask extends StatelessWidget {
                   ),
                   child: Text(
                     AppString.viewTasks,
-                    style: AppStyle.fW400FS15CPrimary,
+                    style: AppTextStyle.fW400FS15CPrimary,
                   ),
                 ),
               ],

@@ -21,12 +21,9 @@ class AppSize {
   static double h35 = 35.h;
   static double h36 = 36.h;
   static double h37 = 37.h;
-  static double h40 = 40.h;
   static double h40_99 = 40.99.h;
   static double h45 = 45.h;
   static double h48 = 48.h;
-  static double h55 = 55.99.h;
-  static double h60 = 60.14.h;
   static double h63_8 = 63.08.h;
   static double h90= 90.h;
   static double h105= 105.h;
@@ -54,13 +51,6 @@ class AppSize {
   // size
   static double s24 = 24.sp;
 
-  // radius
-  static double r14 = 14.r;
-  static double r50 = 50.r;
 
-  // blur
-  static double blur10 = 10.r;
 
-  // spreadRadius
-  static double sp = 0.r;
 }

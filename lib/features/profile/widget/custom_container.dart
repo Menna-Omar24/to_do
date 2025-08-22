@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
+import '../../../core/utils/app_text_style.dart';
 
 class CustomContainer extends StatelessWidget {
   final String title;
@@ -36,7 +36,7 @@ class CustomContainer extends StatelessWidget {
             children: [
               SvgPicture.asset(icon),
               SizedBox(width: AppSize.w16),
-              Text(title, style: AppStyle.fW400FS16CBlackLight),
+              Text(title, style: AppTextStyle.fW400FS16CBlackLight),
               Spacer(),
               SvgPicture.asset(AppAssets.arrow),
             ],

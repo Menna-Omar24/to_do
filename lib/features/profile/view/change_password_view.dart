@@ -40,7 +40,8 @@ class ChangePasswordView extends StatelessWidget {
           Padding(
             padding: REdgeInsets.symmetric(horizontal: 22),
             child: CustomElevatedButton(
-              titleElevatedButton: AppString.elevateSave,
+              text: AppString.elevateSave,
+              onPressed: () {},
             ),
           ),
         ],

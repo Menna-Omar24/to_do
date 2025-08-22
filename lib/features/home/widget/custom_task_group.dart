@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_size.dart';
+import '../../../core/utils/app_text_style.dart';
 
 class CustomTaskGroup extends StatelessWidget {
   final String title;
@@ -55,7 +55,7 @@ class CustomTaskGroup extends StatelessWidget {
                 ),
               ),
               SizedBox(width: AppSize.w11),
-              Text(title, style: AppStyle.fW300FS14CBlackLight),
+              Text(title, style: AppTextStyle.fW300FS14CBlackLight),
               Spacer(),
               Container(
                 width: AppSize.w22,

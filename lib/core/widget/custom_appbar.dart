@@ -1,11 +1,10 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import '../utils/app_style.dart';
 import '../utils/app_assets.dart';
 import '../utils/app_size.dart';
 import '../utils/app_string.dart';
+import '../utils/app_text_style.dart';
 
 class CustomAppbar extends StatefulWidget {
   final String userName;
@@ -30,7 +29,7 @@ class _CustomAppbarState extends State<CustomAppbar> {
           child: CircleAvatar(
             radius: 30,
             backgroundImage: pickImage == null
-                ? AssetImage(AppAssets.auth)
+                ? AssetImage(AppAssets.flag)
                 : FileImage(pickImage!),
           ),
         ),
@@ -38,9 +37,9 @@ class _CustomAppbarState extends State<CustomAppbar> {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(AppString.hello, style: AppStyle.fW300FS12CBlackLight),
+            Text(AppString.hello, style: AppTextStyle.fW300FS12CBlackLight),
             SizedBox(height: AppSize.h4),
-            Text(widget.userName, style: AppStyle.fW300FS16CBlackLight),
+            Text(widget.userName, style: AppTextStyle.fW300FS16CBlackLight),
           ],
         ),
       ],

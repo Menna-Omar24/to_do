@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:to_do/core/utils/app_style.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:to_do/features/get_start/view/lets_start_view.dart';
 
-import '../../../core/helper/custom_nav.dart';
+import '../../../core/helper/navigator.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_string.dart';
 import '../../../core/utils/app_route.dart';
-import 'lets_start.dart';
+import '../../../core/utils/app_text_style.dart';
+import '../../../core/widget/custom_svg_wrapper.dart';
 
 class SplashView extends StatefulWidget {
   static String id = AppRoute.splash;
@@ -20,24 +21,30 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
-      goTo(context, LetsStart());
-    });
-
+    Future.delayed(
+      Duration(seconds: 3),
+      () => Navigation.goTo(
+        context,
+        LetsStartView(),
+        type: NavigationType.pushReplacement,
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SvgPicture.asset(AppAssets.logo),
-            Text(AppString.appTitle, style: AppStyle.fW900FS36CPrimary),
+            CustomSvgWrapper(
+              path: AppAssets.logo,
+              width: double.infinity,
+              height: 344.h,
+            ),
+            Text(AppString.appTitle, style: AppTextStyle.fW900FS36CPrimary),
           ],
         ),
       ),

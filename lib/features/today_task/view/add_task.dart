@@ -53,7 +53,7 @@ class _AddTaskState extends State<AddTask> {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20.r),
-                  child: Image.asset(AppAssets.auth, fit: BoxFit.cover),
+                  child: Image.asset(AppAssets.flag, fit: BoxFit.cover),
                 ),
               ),
             ),
@@ -173,7 +173,8 @@ class _AddTaskState extends State<AddTask> {
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 22.0, vertical: 20),
               child: CustomElevatedButton(
-                titleElevatedButton: AppString.addTask,
+                text: AppString.addTask,
+                onPressed: () {},
               ),
             ),
           ],

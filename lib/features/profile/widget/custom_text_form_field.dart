@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_size.dart';
+import '../../../core/utils/app_text_style.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String hintText;
@@ -30,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
           fillColor: AppColors.white,
           filled: true,
           hintText: hintText,
-          hintStyle: AppStyle.fW200FS14CGrey,
+          hintStyle: AppTextStyle.fW200FS14CGrey,
           suffixIcon: SizedBox(
             width: AppSize.w18_76,
             height: AppSize.h19_22,
@@ -50,7 +50,7 @@ class CustomTextFormField extends StatelessWidget {
   }
 
   OutlineInputBorder outlineInputBorder() => OutlineInputBorder(
-    borderSide: BorderSide(color: AppColors.greyLight),
+    borderSide: BorderSide(color: AppColors.lightGrey),
     borderRadius: BorderRadius.circular(15),
   );
 }

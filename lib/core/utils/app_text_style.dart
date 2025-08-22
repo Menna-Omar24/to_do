@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:to_do/core/theme/app_colors.dart';
 
-class AppStyle {
+class AppTextStyle {
   // w200
   static TextStyle fW200FS14CGrey = TextStyle(
     fontWeight: FontWeight.w200,
@@ -44,7 +44,7 @@ class AppStyle {
   static TextStyle fW300FS20CWhite = TextStyle(
     fontWeight: FontWeight.w300,
     fontSize: 20.sp,
-    color: AppColors.blackLight,
+    color: AppColors.white,
   );
 
   static TextStyle fW300FS12CBlackLight = TextStyle(
@@ -163,6 +163,7 @@ class AppStyle {
     fontSize: 10.sp,
   );
 
+  // style appTitle in splash screen
   // w900
   static TextStyle fW900FS36CPrimary = TextStyle(
     fontWeight: FontWeight.w900,

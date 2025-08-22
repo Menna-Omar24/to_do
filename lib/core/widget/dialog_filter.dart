@@ -107,8 +107,8 @@ class _DialogFilterState extends State<DialogFilter> {
           SizedBox(
             width: double.infinity,
             child: CustomElevatedButton(
-              titleElevatedButton: AppString.filter,
-              onTap: () {
+              text: AppString.filter,
+              onPressed: () {
                 Navigator.pop(context);
               },
             ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:to_do/core/utils/app_text_style.dart';
 
 import 'app_colors.dart';
-import '../utils/app_style.dart';
 
 class AppTheme{
   static ThemeData isLightTheme = ThemeData(
@@ -13,7 +13,7 @@ class AppTheme{
       elevation: 0,
       centerTitle: true,
       iconTheme: IconThemeData(color: AppColors.blackLight),
-      titleTextStyle: AppStyle.fW300FS19CBlackLight,
+      titleTextStyle: AppTextStyle.fW300FS19CBlackLight,
     )
   );
 

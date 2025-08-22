@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_style.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_size.dart';
+import '../../../core/utils/app_text_style.dart';
 
 class CustomCard extends StatelessWidget {
   final String title;
@@ -49,7 +49,7 @@ class CustomCard extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(7.r),
             child: Image.asset(
-              AppAssets.auth,
+              AppAssets.flag,
               width: 60.w,
               height: 60.h,
               fit: BoxFit.cover,
@@ -58,7 +58,7 @@ class CustomCard extends StatelessWidget {
         ),
         title: Padding(
           padding: REdgeInsets.only(top: 15),
-          child: Text(title, style: AppStyle.fW300FS14CBlack),
+          child: Text(title, style: AppTextStyle.fW300FS14CBlack),
         ),
         subtitle: Padding(
           padding: const EdgeInsets.only(top: 12),
