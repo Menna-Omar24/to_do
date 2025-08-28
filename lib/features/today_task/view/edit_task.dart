@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/utils/app_string.dart';
 import '../../../core/utils/app_route.dart';
 import '../../../core/widget/default_app_bar.dart';
-import '../../home/view/home_view.dart';
+import '../../home/view/home.dart';
 
 class EditTask extends StatelessWidget {
   static String id = AppRoute.editTask;
@@ -18,7 +18,7 @@ class EditTask extends StatelessWidget {
         child: DefaultAppBar(
           title: AppString.addTask,
           onTap: () {
-            Navigator.pushNamed(context, HomeView.id);
+            Navigator.pushNamed(context, HomeViews.id);
           },
         ),
       ),

@@ -111,7 +111,7 @@ class _UpdateProfileViewState extends State<UpdateProfileView> {
               ),
             ),
             SizedBox(height: 23.h),
-            CustomTextFormField(
+            CustomTextField(
               controller: userNameController,
               hintText: AppString.hintTextUsername,
             ),

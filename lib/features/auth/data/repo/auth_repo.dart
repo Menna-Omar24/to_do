@@ -1,18 +1,29 @@
-import 'package:to_do/core/helper/create_account.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:to_do/features/auth/data/model/user_model.dart';
 
 class AuthRepo {
-  Future<UserModel> login({required String email, required String password}) {
-    return Future.delayed(Duration(seconds: 2), () {
-      return UserModel(name: 'mohamed', email: email);
-    });
+  Future<bool> register({required UserModel userModel}) async {
+    try {
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: userModel.email,
+            password: userModel.password ?? '',
+          );
+      return true;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+      return false;
+    } catch (e) {
+      print(e);
+    }
+    return false;
   }
 
-  Future register({
-    required String name,
-    required String email,
-    required String password,
-  }) async {
-    createAccount(email, password);
+  login({required UserModel userModel}) {
+    print('register');
   }
 }

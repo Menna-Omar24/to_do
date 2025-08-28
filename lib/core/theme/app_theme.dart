@@ -18,6 +18,6 @@ class AppTheme{
   );
 
   static ThemeData isDarkTheme = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primary),
   );
 }

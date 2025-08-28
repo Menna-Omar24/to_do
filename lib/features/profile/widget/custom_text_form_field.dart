@@ -5,12 +5,12 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_text_style.dart';
 
-class CustomTextFormField extends StatelessWidget {
+class CustomTextField extends StatelessWidget {
   final String hintText;
   final String? suffixIcon;
   final TextEditingController? controller;
 
-  const CustomTextFormField({
+  const CustomTextField({
     super.key,
     required this.hintText,
     this.controller,

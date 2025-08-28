@@ -1,14 +1,8 @@
-class AppValidator {
-  static String? validateUsername(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'Please enter a username';
-    }
-    return null;
-  }
-
+abstract class AppValidator {
   static String? validateEmail(String? value) {
-    if (value == null || value.trim().isEmpty) {
-      return 'Please enter an email';
+    var emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    if (!emailRegex.hasMatch(value ?? '')) {
+      return 'Please enter valid email';
     }
     return null;
   }
@@ -24,7 +18,7 @@ class AppValidator {
 
   static String? validateConfirmPassword(String? value, String password) {
     if (value == null || value.trim().isEmpty) {
-      return 'Please confirm your password';
+      return 'Please enter your password confirmation';
     } else if (value != password) {
       return 'Passwords do not match';
     }

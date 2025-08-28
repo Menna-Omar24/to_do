@@ -1,24 +1,23 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:to_do/core/utils/app_assets.dart';
-import 'package:to_do/core/utils/app_size.dart';
-import 'package:to_do/core/widget/custom_elevated_button.dart';
-import 'package:to_do/features/auth/cubit/register/register_state.dart';
+import 'package:to_do/core/helper/validator.dart';
+import 'package:to_do/core/theme/app_colors.dart';
+import 'package:to_do/core/utils/app_text_style.dart';
+import 'package:to_do/features/auth/cubit/register/register_cubit.dart';
+import 'package:to_do/features/auth/views/widget/custom_row.dart';
+import 'package:to_do/features/home/view/home.dart';
 
-import '../../../core/helper/create_account.dart';
 import '../../../core/helper/navigator.dart';
-import '../../../core/helper/validator.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/utils/app_string.dart';
+import '../../../core/utils/app_assets.dart';
+import '../../../core/utils/app_padding.dart';
 import '../../../core/utils/app_route.dart';
-import '../../../core/utils/app_text_style.dart';
+import '../../../core/utils/app_size.dart';
+import '../../../core/utils/app_string.dart';
+import '../../../core/widget/custom_elevated_button.dart';
 import '../../../core/widget/custom_svg_wrapper.dart';
 import '../../../core/widget/custom_text_form_field.dart';
 import '../../../core/widget/default_flag.dart';
-import '../cubit/register/register_cubit.dart';
-import 'login_view.dart';
+import '../cubit/register/register_state.dart';
 
 class RegisterView extends StatelessWidget {
   static String id = AppRoute.register;
@@ -27,166 +26,128 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> key = GlobalKey();
+    return Scaffold(
+      body: BlocProvider(
+        create: (context) => RegisterCubit(),
+        child: SingleChildScrollView(
+          child: BlocConsumer<RegisterCubit, RegisterState>(
+            listenWhen: (previous, current) =>
+                current is RegisterSuccessState ||
+                current is RegisterErrorState,
+            listener: (context, state) {
+              if (state is RegisterSuccessState) {
+                Navigation.goTo(
+                  context,
+                  HomeViews(),
+                  type: NavigationType.pushAndRemoveUntil,
+                );
+              } else if (state is RegisterErrorState) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: AppColors.red,
+                    content: Text(
+                      'Error Occurred',
+                      style: AppTextStyle.fW300FS12CWhite,
+                    ),
+                  ),
+                );
+              }
+            },
+            buildWhen: (previous, current) =>
+                /* !(current is RegisterSuccessState ||
+                    current is RegisterErrorState) ||
+                previous is RegisterLoadingState,*/
+                current is RegisterLoadingState ||
+                previous is RegisterLoadingState ||
+                previous is ChangePasswordVisibility ||
+                previous is ChangeConfirmPasswordVisibility,
 
-    return BlocProvider(
-      create: (BuildContext context) => RegisterCubit(),
-      child: Scaffold(
-        body: BlocBuilder<RegisterCubit, RegisterState>(
-          builder: (context, state) => Form(
-            key: key,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  DefaultFlag(),
-                  SizedBox(height: AppSize.h23),
-                  Padding(
-                    padding: REdgeInsets.symmetric(horizontal: 21.0),
-                    child: Column(
-                      children: [
-                        CustomTextFormField(
-                          controller: RegisterCubit.get(context).userName,
-                          validator: AppValidator.validateUsername,
-                          hintText: AppString.hintTextUsername,
-                          prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: CustomSvgWrapper(
-                              path: AppAssets.profileOutline,
+            builder: (context, state) {
+              var cubit = RegisterCubit.get(context);
+              return Form(
+                key: cubit.formKey,
+                child: Column(
+                  children: [
+                    DefaultFlag(),
+                    SizedBox(height: AppSize.h23),
+                    Padding(
+                      padding: AppPadding.defaultPadding,
+                      child: Column(
+                        children: [
+                          CustomTextFormField(
+                            validator: AppValidator.validateEmail,
+                            controller: cubit.email,
+                            prefixIcon: IconButton(
+                              onPressed: null,
+                              icon: CustomSvgWrapper(
+                                path: AppAssets.profileOutline,
+                              ),
                             ),
+                            hintText: AppString.hintTextEmail,
                           ),
-                        ),
-                        SizedBox(height: AppSize.h10),
-                        CustomTextFormField(
-                          controller: RegisterCubit.get(context).email,
-                          validator: AppValidator.validateEmail,
-                          hintText: AppString.hintTextEmail,
-                          prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: Icon(
-                              Icons.email_outlined,
-                              color: AppColors.blackLight,
+                          SizedBox(height: AppSize.h10),
+                          CustomTextFormField(
+                            validator: AppValidator.validatePassword,
+                            controller: cubit.password,
+                            prefixIcon: IconButton(
+                              onPressed: null,
+                              icon: CustomSvgWrapper(path: AppAssets.password),
                             ),
-                          ),
-                        ),
-                        SizedBox(height: AppSize.h10),
-                        CustomTextFormField(
-                          controller: RegisterCubit.get(context).password,
-                          validator: AppValidator.validatePassword,
-                          hintText: AppString.hintTextPassword,
-                          prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: CustomSvgWrapper(path: AppAssets.password),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              RegisterCubit.get(
-                                context,
-                              ).changePasswordVisibility();
-                            },
-                            icon: CustomSvgWrapper(
-                              path: RegisterCubit.get(context).isPassword
-                                  ? AppAssets.lock
-                                  : AppAssets.unLock,
+                            suffixIcon: IconButton(
+                              onPressed: cubit.changePasswordVisibility,
+                              icon: CustomSvgWrapper(
+                                path: cubit.passwordSecure
+                                    ? AppAssets.unLock
+                                    : AppAssets.lock,
+                              ),
                             ),
+                            obscureText: cubit.passwordSecure,
+                            hintText: AppString.hintTextPassword,
                           ),
-                          isPassword: RegisterCubit.get(context).isPassword,
-                        ),
-                        SizedBox(height: AppSize.h10),
-                        CustomTextFormField(
-                          controller: RegisterCubit.get(
-                            context,
-                          ).confirmPassword,
-                          validator: (value) =>
-                              AppValidator.validateConfirmPassword(
+                          SizedBox(height: AppSize.h10),
+                          CustomTextFormField(
+                            validator: (String? value) {
+                              return AppValidator.validateConfirmPassword(
                                 value,
-                                RegisterCubit.get(context).password.text,
-                              ),
-                          hintText: AppString.hintTextConfirmPassword,
-                          prefixIcon: IconButton(
-                            onPressed: null,
-                            icon: CustomSvgWrapper(path: AppAssets.password),
-                          ),
-                          suffixIcon: IconButton(
-                            onPressed: () {
-                              RegisterCubit.get(
-                                context,
-                              ).changeConfirmPasswordVisibility();
-                            },
-                            icon: CustomSvgWrapper(
-                              path: RegisterCubit.get(context).isConfirmPassword
-                                  ? AppAssets.lock
-                                  : AppAssets.unLock,
-                            ),
-                          ),
-                          isPassword: RegisterCubit.get(
-                            context,
-                          ).isConfirmPassword,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: AppSize.h23),
-                  Padding(
-                    padding: REdgeInsets.symmetric(horizontal: 21),
-                    child: CustomElevatedButton(
-                      text: AppString.elevateRegister,
-                      onPressed: () async {
-                        if (key.currentState!.validate()) {
-                          bool isCreated = await createAccount(
-                            RegisterCubit.get(context).email.text,
-                            RegisterCubit.get(context).password.text,
-                          );
-
-                          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-
-                          if (isCreated) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('Registration Successful.'),
-                              ),
-                            );
-                            Navigation.goTo(
-                              context,
-                              LoginView(),
-                              type: NavigationType.pushReplacement,
-                            );
-                          } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(
-                                  'Registration Failed. Please try again.',
-                                ),
-                              ),
-                            );
-                          }
-                        }
-                      },
-                    ),
-                  ),
-                  SizedBox(height: AppSize.h40_99),
-                  Text.rich(
-                    TextSpan(
-                      text: AppString.alreadyHaveAnAccount,
-                      style: AppTextStyle.fW200FS14CBlackLight,
-                      children: [
-                        TextSpan(
-                          text: AppString.elevateLogin,
-                          style: AppTextStyle.fW400FS14CBlackLight,
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              Navigation.goTo(
-                                context,
-                                LoginView(),
-                                type: NavigationType.push,
+                                cubit.password.text,
                               );
                             },
-                        ),
-                      ],
+                            controller: cubit.confirmPassword,
+                            prefixIcon: IconButton(
+                              onPressed: null,
+                              icon: CustomSvgWrapper(path: AppAssets.password),
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: cubit.changeConfirmPasswordVisibility,
+                              icon: CustomSvgWrapper(
+                                path: cubit.confirmPasswordSecure
+                                    ? AppAssets.unLock
+                                    : AppAssets.lock,
+                              ),
+                            ),
+                            obscureText: cubit.confirmPasswordSecure,
+                            hintText: AppString.hintTextConfirmPassword,
+                          ),
+                          SizedBox(height: AppSize.h23),
+                          state is RegisterLoadingState
+                              ? Center(child: CircularProgressIndicator())
+                              : CustomElevatedButton(
+                                  text: AppString.elevateRegister,
+                                  onPressed: cubit.onRegisterPressed,
+                                ),
+                          SizedBox(height: AppSize.h40_99),
+                          CustomRow(
+                            text: AppString.alreadyHaveAnAccount,
+                            textButton: AppString.elevateLogin,
+                            onPressed: () => Navigation.goBack(context),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ),

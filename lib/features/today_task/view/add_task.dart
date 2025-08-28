@@ -10,7 +10,7 @@ import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_string.dart';
 import '../../../core/utils/app_route.dart';
 import '../../../core/widget/default_app_bar.dart';
-import '../../home/view/home_view.dart';
+import '../../home/view/home.dart';
 import '../data/drop_down_item_model.dart';
 import '../widget/custom_text_field_drop_down.dart';
 
@@ -35,7 +35,7 @@ class _AddTaskState extends State<AddTask> {
         child: DefaultAppBar(
           title: AppString.addTask,
           onTap: () {
-            Navigator.pushNamed(context, HomeView.id);
+            Navigator.pushNamed(context, HomeViews.id);
           },
         ),
       ),
@@ -58,9 +58,9 @@ class _AddTaskState extends State<AddTask> {
               ),
             ),
             SizedBox(height: AppSize.h15),
-            CustomTextFormField(hintText: AppString.title),
+            CustomTextField(hintText: AppString.title),
             SizedBox(height: AppSize.h15),
-            CustomTextFormField(hintText: AppString.description),
+            CustomTextField(hintText: AppString.description),
             SizedBox(height: AppSize.h15),
             Padding(
               padding: REdgeInsets.symmetric(horizontal: 20),

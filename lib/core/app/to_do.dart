@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +9,7 @@ import '../../features/get_start/view/splash_view.dart';
 import '../../features/home/task/home_task.dart';
 import '../../features/home/task/personal_task.dart';
 import '../../features/home/task/work_task.dart';
-import '../../features/home/view/home_view.dart';
+import '../../features/home/view/home.dart';
 import '../../features/profile/view/change_password_view.dart';
 import '../../features/profile/view/profile_view.dart';
 import '../../features/profile/view/setting_view.dart';
@@ -36,7 +37,7 @@ class ToDo extends StatelessWidget {
             LetsStartView.id: (_) => LetsStartView(),
             RegisterView.id: (_) => RegisterView(),
             LoginView.id: (_) => LoginView(),
-            HomeView.id: (_) => HomeView(),
+            HomeViews.id: (_) => HomeViews(),
             ProfileView.id: (_) => ProfileView(),
             UpdateProfileView.id: (_) => UpdateProfileView(),
             ChangePasswordView.id: (_) => ChangePasswordView(),
@@ -49,6 +50,9 @@ class ToDo extends StatelessWidget {
             WorkTask.id: (_) => WorkTask(),
           },
           initialRoute: SplashView.id,
+          home: FirebaseAuth.instance.currentUser == null
+              ? const LoginView()
+              :  HomeViews(),
         );
       },
     );

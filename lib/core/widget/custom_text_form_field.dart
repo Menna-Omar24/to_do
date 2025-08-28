@@ -7,24 +7,23 @@ import '../utils/app_text_style.dart';
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final bool isPassword;
   final Widget prefixIcon;
   final Widget? suffixIcon;
   final String hintText;
+  final bool obscureText;
 
   const CustomTextFormField({
     super.key,
     required this.controller,
     this.validator,
-    this.isPassword = false,
     required this.prefixIcon,
     this.suffixIcon,
     required this.hintText,
+    this.obscureText = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    bool obscureText = isPassword;
 
     return TextFormField(
       style: AppTextStyle.fW300FS14CBlack,

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
@@ -9,7 +8,11 @@ class CustomElevatedButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
 
-  const CustomElevatedButton({super.key, required this.text, required this.onPressed});
+  const CustomElevatedButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,6 @@ class CustomElevatedButton extends StatelessWidget {
     );
   }
 }
-
 
 /*
 import 'package:flutter/material.dart';

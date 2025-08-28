@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../data/model/user_model.dart';
-import '../../data/repo/auth_repo.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
 
   static LoginCubit get(context) => BlocProvider.of(context);
-  TextEditingController userName = TextEditingController();
-  TextEditingController email = TextEditingController();
-  TextEditingController password = TextEditingController();
-
+  final TextEditingController userName = TextEditingController();
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  var formKey = GlobalKey<FormState>();
   bool passwordSecure = true;
 
   void changePasswordVisibility() {
@@ -19,13 +17,18 @@ class LoginCubit extends Cubit<LoginState> {
     emit(LoginChangePasswordVisibility());
   }
 
-  AuthRepo repo = AuthRepo();
+/*  final AuthRepo repo = AuthRepo();
 
   void login() async {
-    // if formKey.currentState?.validate()
-    UserModel user = await repo.login(
-      email: userName.text,
+    if (!formKey.currentState!.validate()) return;
+    emit(LoginLoadingState());
+    var loginResponse = await repo.signInAccount(
+      email: email.text,
       password: password.text,
     );
-  }
+    loginResponse.fold(
+      (String error) => emit(LoginErrorState(error: error)),
+      (userModel) => emit(LoginSuccessState(userModel: userModel)),
+    );
+  }*/
 }

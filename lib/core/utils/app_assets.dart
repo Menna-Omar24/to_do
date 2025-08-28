@@ -1,9 +1,9 @@
  abstract class AppAssets {
   // assetsBasePath
-  static const String assetsBasePath = 'assets/images/';
+  static const String _assetsBasePath = 'assets/images/';
 
   // auth
-  static const String flag = '${assetsBasePath}flag.png';
+  static const String flag = '${_assetsBasePath}flag.png';
 
 
   // auth svg
