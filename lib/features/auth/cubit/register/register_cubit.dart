@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:to_do/features/auth/cubit/register/register_state.dart';
-
 import '../../data/model/user_model.dart';
 import '../../data/repo/auth_repo.dart';
+import 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(InitialState());
@@ -33,29 +32,35 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void onRegisterPressed() async {
-    if (!formKey.currentState!.validate()) {
-      return;
-    }
+    if (!formKey.currentState!.validate()) return;
+
     AuthRepo authRepo = AuthRepo();
     emit(RegisterLoadingState());
-    var result = await authRepo.register(
-      userModel: UserModel(
-        name: userName.text,
-        email: email.text,
-        password: password.text,
-      ),
-    );
-    emit(result ? RegisterSuccessState() : RegisterErrorState());
-  }
 
-  /*Future<void> onRegisterPressed() async {
+    var userModel = UserModel(
+      name: userName.text,
+      email: email.text,
+      password: password.text,
+    );
+
+    var result = await authRepo.register(userModel: userModel);
+
+    if (result) {
+      emit(RegisterSuccessState(userModel: userModel));
+    } else {
+      emit(RegisterErrorState("Error occurred"));
+    }
+  }
+}
+
+/*Future<void> onRegisterPressed() async {
     if (!formKey.currentState!.validate()) {
       return;
     }*/
 
-  // emit(RegisterLoadingState());
+// emit(RegisterLoadingState());
 
-  /* AuthRepo authRepo = AuthRepo();
+/* AuthRepo authRepo = AuthRepo();
     var response = await authRepo.signUpAccount(
       name: userName.text,
       email: email.text,
@@ -66,4 +71,3 @@ class RegisterCubit extends Cubit<RegisterState> {
       (userModel) => emit(RegisterSuccessState(userModel: userModel)),
     );
   }*/
-}

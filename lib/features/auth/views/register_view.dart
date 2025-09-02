@@ -1,25 +1,23 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:to_do/core/helper/validator.dart';
-import 'package:to_do/core/theme/app_colors.dart';
-import 'package:to_do/core/utils/app_text_style.dart';
-import 'package:to_do/features/auth/cubit/register/register_cubit.dart';
-import 'package:to_do/features/auth/views/widget/custom_row.dart';
 import '../../../core/helper/navigator.dart';
+import '../../../core/theme/app_colors.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../../core/utils/app_padding.dart';
 import '../../../core/utils/app_route.dart';
 import '../../../core/utils/app_size.dart';
 import '../../../core/utils/app_string.dart';
+import '../../../core/helper/validator.dart';
 import '../../../core/widget/custom_elevated_button.dart';
 import '../../../core/widget/custom_svg_wrapper.dart';
 import '../../../core/widget/custom_text_form_field.dart';
 import '../../../core/widget/default_flag.dart';
 import '../../../core/widget/image_manager/image_manager_view.dart';
 import '../../home/view/home_view.dart';
+import '../cubit/register/register_cubit.dart';
 import '../cubit/register/register_state.dart';
+import '../../auth/views/widget/custom_row.dart';
 
 class RegisterView extends StatelessWidget {
   static String id = AppRoute.register;
@@ -48,33 +46,28 @@ class RegisterView extends StatelessWidget {
                   SnackBar(
                     backgroundColor: AppColors.red,
                     content: Text(
-                      'Error Occurred',
-                      style: AppTextStyle.fW300FS12CWhite,
+                      state.errorMessage,
+                      style: TextStyle(color: Colors.white),
                     ),
                   ),
                 );
               }
             },
             buildWhen: (previous, current) =>
-                /* !(current is RegisterSuccessState ||
-                    current is RegisterErrorState) ||
-                previous is RegisterLoadingState,*/
                 current is RegisterLoadingState ||
                 previous is RegisterLoadingState ||
                 previous is ChangePasswordVisibility ||
                 previous is ChangeConfirmPasswordVisibility,
-
             builder: (context, state) {
               var cubit = RegisterCubit.get(context);
               return Form(
                 key: cubit.formKey,
                 child: Column(
                   children: [
-                    // DefaultFlag(),
                     ImageManagerView(
-                      onImagePicked: (image)=> RegisterCubit.get(context).image = image,
-                      imageBuilder:(image){
-                        return DefaultFlag(image: FileImage(File(image.path)),);
+                      onImagePicked: (image) => cubit.image = image,
+                      imageBuilder: (image) {
+                        return DefaultFlag(image: FileImage(File(image.path)));
                       },
                       defaultBuilder: DefaultFlag(),
                     ),
@@ -85,12 +78,20 @@ class RegisterView extends StatelessWidget {
                         children: [
                           CustomTextFormField(
                             validator: AppValidator.validateEmail,
+                            controller: cubit.userName,
+                            prefixIcon: IconButton(
+                              onPressed: null,
+                              icon: CustomSvgWrapper(path: AppAssets.profileOutline),
+                            ),
+                            hintText: AppString.hintTextUsername,
+                          ),
+                          SizedBox(height: AppSize.h10),
+                          CustomTextFormField(
+                            validator: AppValidator.validateEmail,
                             controller: cubit.email,
                             prefixIcon: IconButton(
                               onPressed: null,
-                              icon: CustomSvgWrapper(
-                                path: AppAssets.email,
-                              ),
+                              icon: CustomSvgWrapper(path: AppAssets.email),
                             ),
                             hintText: AppString.hintTextEmail,
                           ),
